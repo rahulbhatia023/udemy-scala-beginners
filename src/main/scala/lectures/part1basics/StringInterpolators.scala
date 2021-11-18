@@ -29,6 +29,12 @@ object StringInterpolators extends App {
   // Mike can eat 1.20 burgers per minute
 
 
+  // If we try to pass a Double value while formatting is done using %d specifier, compiler outputs an error. Hence f-interpolators can check for type correctness
+  val x = 1.1f // Value is float
+  // Compilation Error: Type Mismatch - Found float, Required Int
+  //val str = f"$x%3d"
+
+
   /**
    * Raw - Interpolators
    */

@@ -2,16 +2,26 @@ package lectures.part2oop
 
 object MethodNotations extends App {
 
-  class Person(val name: String, favoriteMovie: String) {
+  class Person(val name: String, favoriteMovie: String, val age: Int = 0) {
     def likes(movie: String): Boolean = movie == favoriteMovie
 
     def hangOutWith(person: Person) = s"${this.name} is hanging out with ${person.name}"
 
+    def hangOutWith(nickName: String) = new Person(s"$name ($nickName)", favoriteMovie)
+
     def unary_! : String = s"${this.name}, What the heck !!"
+
+    def unary_+ : Person = new Person(name, favoriteMovie, age + 1)
 
     def isAlive: Boolean = true
 
     def apply() = s"Hi, my name is $name and I like $favoriteMovie"
+
+    def apply(n: Int): String = s"$name watched $favoriteMovie $n times"
+
+    def learns(thing: String) = s"$name is learning $thing"
+
+    def learnsScala: String = learns("Scala")
   }
 
   val mary = new Person("Mary", "Inception")
@@ -78,4 +88,14 @@ object MethodNotations extends App {
    */
   println(mary.apply()) // Hi, my name is Mary and I like Inception
   println(mary()) // Hi, my name is Mary and I like Inception
+
+
+  println((mary hangOutWith "The Rockstar") ()) // Hi, my name is Mary (The Rockstar) and I like Inception
+
+
+  println((+mary).age) // 1
+
+  println(mary learnsScala) // Mary is learning Scala
+
+  println(mary(10)) // Mary watched Inception 10 times
 }
