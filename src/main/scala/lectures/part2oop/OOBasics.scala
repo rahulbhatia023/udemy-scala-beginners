@@ -11,25 +11,18 @@ object OOBasics extends App {
   Note - At every class instantiation, the body of the class gets evaluated
   */
 
-
   // Compilation Error: value age cannot be accessed as a member of Person1
   // println(person1.age)
-
 
   println(person1.x) // 2
 
 
-  val person2 = new Person2("John", 26)
-  println(person2.age)
+  val person2 = new Person2("Harry")
+  println(person2.age) // 0
 
-  person2.greet1("Daniel")
-  // Daniel says, Hi Daniel
 
-  person2.greet2("Daniel")
-  // John says, Hi Daniel
-
-  person2.greet3()
-  // Hi, I am John
+  val person3 = new Person2
+  println(person3.name) // John
 }
 
 /**
@@ -47,7 +40,7 @@ class Person1(name: String, age: Int) {
       variable definitions, method definitions, expressions, packages imports, etc
    */
 
-  // The val or val definitions inside the class body are fields
+  // The var or val definitions inside the class body are fields
   val x = 2
 
   println("I am the body definition of Person1")
@@ -58,30 +51,7 @@ class Person1(name: String, age: Int) {
  * include val or var before parameters
  * name and age are now class fields
  */
-class Person2(val name: String, val age: Int) {
-
-  /**
-   * Method Overloading - Different methods with same name but with different signature
-   */
-
-  def greet1(name: String): Unit = {
-    println(s"$name says, Hi $name")
-  }
-
-  def greet2(name: String): Unit = {
-    println(s"${this.name} says, Hi $name")
-  }
-
-  def greet3(): Unit = {
-    println(s"Hi, I am $name")
-  }
-
-  /**
-   * Compilation Error - greet3 is already defined
-   * No method can exist with same name and same signature and have different return type
-   */
-  // def greet3(): Int = 23
-
+class Person2(var name: String, val age: Int) {
   /**
    * Multiple Constructors / Auxiliary Constructors
    * Each auxiliary constructor must call one of the previously defined constructors, this would be primary constructor or previous auxiliary constructor.
