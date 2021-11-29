@@ -11,6 +11,8 @@ object AbstractDataTypes extends App {
     val creatureType: String
 
     def eat(): Unit
+
+    def walk(): Unit = println("I am walking")
   }
 
   /**
@@ -32,12 +34,31 @@ object AbstractDataTypes extends App {
 
 
   /**
+   * An abstract class can also contain a constructor
+   * Constructor of an abstract class is called when the instance of an inherited class is created.
+   */
+  abstract class Author(name: String, topic: String) {
+    def details(): Unit
+  }
+
+  class MyAuthor(name: String, topic: String) extends Author(name, topic) {
+    def details(): Unit = println(s"Author name: $name, Topic name: $topic")
+  }
+
+  var obj = new MyAuthor("Tom", "Abstract Class")
+  obj.details() // Author name: Tom, Topic name: Abstract Class
+
+  /**
    * Traits - alternate abstract data type in scala
    * Like abstract classes, traits also contains abstract fields and methods
    * Unlike abstract classes, traits can be inherited along classes
    */
   trait Carnivore {
     def eat(animal: Animal): Unit
+  }
+
+  class Lion extends Carnivore {
+    def eat(animal: Animal): Unit = println(s"I am a Lion and I am eating ${animal.creatureType}")
   }
 
   /**
