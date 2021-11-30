@@ -89,4 +89,61 @@ object AbstractDataTypes extends App {
    * Traits do not have constructor parameters
    * Traits = Behaviour, Abstract Class = Thing
    */
+
+
+  /**
+   * Rather than adding a Scala trait to an entire class, you just want to add a trait to an object instance when the object is created.
+   */
+  trait Climb
+
+  val cannotClimbDogInstance = new Dog
+
+  val canClimbDogInstance = new Dog with Climb
+
+
+  /**
+   * Let’s consider another restriction where an employee(HR / TechLead) can have a trait CodingSkills only if an employee is a developer
+   */
+  trait Developer {
+    def writeCode(): String = "I can code in Java"
+  }
+
+  trait Tester {
+    def writeCode(): String = "I can code in Selenium"
+  }
+
+  /**
+   * We need to ensure that CodingSkills can be extended by types if and only if they also extend the Developer type
+   */
+  trait CodingSkills {
+    this: Developer =>
+  }
+
+  class TechLead extends Developer with CodingSkills
+
+  // Compilation Error: illegal inheritance
+  // class HR extends CodingSkills
+
+  class BigDataArchitect extends Developer with Tester {
+    /**
+     * If we want to explicitly call a conflicting method in the parent traits, then the super keyword can be given a type
+     */
+    override def writeCode(): String =
+      super[Developer].writeCode() + ", " + super[Tester].writeCode()
+  }
+
+  val bda = new BigDataArchitect
+  println(bda.writeCode())
+
+
+  /**
+   * Sealed Traits
+   */
+  sealed trait X
+
+  class A extends X
+
+  class B extends X
+
+  class C extends X
 }
