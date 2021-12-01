@@ -1,11 +1,11 @@
 package lectures.part2oop
 
 object MethodOverriding extends App {
-  val animal = new Animal
+  val animal: Animal = new Animal
   animal.eat() // nomnom
   println(animal.creatureType) // Wild
 
-  val dog = new Dog
+  val dog: Animal = new Dog
   dog.eat() // Crunch, Crunch
   println(dog.creatureType) // Domestic
 
