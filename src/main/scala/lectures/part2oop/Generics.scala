@@ -65,4 +65,27 @@ object Generics extends App {
   class Trainer[-A]
 
   val trainer: Trainer[Cat] = new Trainer[Animal]
+
+
+  /**
+   * Bounded Types
+   */
+  class Cage[A <: Animal](animal: A)
+
+  // Works Fine
+  val cage = new Cage(new Dog)
+
+
+  // Compilation Error: Found Car, Required Animal
+  class Car
+
+  // val newCage = new Cage(new Car)
+
+
+  /**
+   * Bounded Type solves the Covariance Problem
+   */
+  class MyCollection[+A] {
+    def add[B >: A](element: B): MyCollection[B] = ???
+  }
 }
