@@ -26,14 +26,14 @@ abstract class MyListGenerics[+A] {
   def ++[B >: A](list: MyListGenerics[B]): MyListGenerics[B]
 }
 
-object EmptyGenerics extends MyListGenerics[Nothing] {
+case object EmptyGenerics extends MyListGenerics[Nothing] {
   def head: Nothing = throw new NoSuchElementException
 
   def tail: MyListGenerics[Nothing] = throw new NoSuchElementException
 
   def isEmpty: Boolean = true
 
-  def add[B >: Nothing](element: B): MyListGenerics[B] = new ConsGenerics(element, EmptyGenerics)
+  def add[B >: Nothing](element: B): MyListGenerics[B] = ConsGenerics(element, EmptyGenerics)
 
   def printElements: String = ""
 
@@ -46,27 +46,27 @@ object EmptyGenerics extends MyListGenerics[Nothing] {
   override def ++[B >: Nothing](list: MyListGenerics[B]): MyListGenerics[B] = list
 }
 
-class ConsGenerics[+A](h: A, t: MyListGenerics[A]) extends MyListGenerics[A] {
+case class ConsGenerics[+A](h: A, t: MyListGenerics[A]) extends MyListGenerics[A] {
   def head: A = h
 
   def tail: MyListGenerics[A] = t
 
   def isEmpty: Boolean = false
 
-  def add[B >: A](element: B): MyListGenerics[B] = new ConsGenerics(element, this)
+  def add[B >: A](element: B): MyListGenerics[B] = ConsGenerics(element, this)
 
   def printElements: String =
     if (t.isEmpty) "" + h
     else s"$h ${t.printElements}"
 
   def filter(predicate: MyPredicate[A]): MyListGenerics[A] =
-    if (predicate.test(h)) new ConsGenerics(h, t.filter(predicate))
+    if (predicate.test(h)) ConsGenerics(h, t.filter(predicate))
     else t.filter(predicate)
 
   def map[B](transformer: MyTransformer[A, B]): MyListGenerics[B] =
-    new ConsGenerics(transformer.transform(h), t.map(transformer))
+    ConsGenerics(transformer.transform(h), t.map(transformer))
 
-  override def ++[B >: A](list: MyListGenerics[B]): MyListGenerics[B] = new ConsGenerics(h, t ++ list)
+  override def ++[B >: A](list: MyListGenerics[B]): MyListGenerics[B] = ConsGenerics(h, t ++ list)
 
   override def flatMap[B](transformer: MyTransformer[A, MyListGenerics[B]]): MyListGenerics[B] =
     transformer.transform(h) ++ t.flatMap(transformer)
