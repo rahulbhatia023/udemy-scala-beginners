@@ -16,7 +16,7 @@ object AnonymousFunctions extends App {
   val doubler2: Int => Int = (x: Int) => x * 2
 
   /**
-   * Given the fact that we have declared newDoubler to be of type 'Int => Int', we can remove the type from declaration of 'x'
+   * Given the fact that we have declared doubler2 to be of type 'Int => Int', we can remove the type from declaration of 'x'
    */
   val doubler3: Int => Int = x => x * 2
 
