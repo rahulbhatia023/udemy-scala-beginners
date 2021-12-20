@@ -1,6 +1,6 @@
 package lectures.part3fp
 
-object WhatsAFunction extends App {
+object FunctionTypes extends App {
 
   /**
    * Use functions as first class elements - Work with functions like we work with values
@@ -62,4 +62,22 @@ object WhatsAFunction extends App {
   }
 
   // All Scala functions are objects or instances of classes derived from Function Types (Function1, Function2, Function3, etc..)
+
+  def concatenator: Function2[String, String, String] = new Function2[String, String, String] {
+    override def apply(a: String, b: String): String = a.concat(b)
+  }
+
+  println(concatenator("Hello ", "Scala"))
+
+
+  /**
+   * Function Currying
+   */
+  val superAdder: Function1[Int, Function1[Int, Int]] = new Function1[Int, Function1[Int, Int]] {
+    override def apply(x: Int): Function1[Int, Int] = new Function1[Int, Int] {
+      override def apply(y: Int): Int = x + y
+    }
+  }
+
+  println(superAdder(3)(4)) // 7
 }
