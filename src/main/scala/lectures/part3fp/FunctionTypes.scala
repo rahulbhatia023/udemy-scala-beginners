@@ -71,7 +71,7 @@ object FunctionTypes extends App {
 
 
   /**
-   * Function Currying
+   * Super Adder Implementation: A function which takes an int input and returns the another function which takes int input and returns the sum of these two int
    */
   val superAdder: Function1[Int, Function1[Int, Int]] = new Function1[Int, Function1[Int, Int]] {
     override def apply(x: Int): Function1[Int, Int] = new Function1[Int, Int] {

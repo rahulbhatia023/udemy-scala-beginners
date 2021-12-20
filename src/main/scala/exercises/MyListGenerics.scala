@@ -79,9 +79,9 @@ object ListTestGenerics extends App {
   println(listOfIntegers.toString)
   println(listOfStrings.toString)
 
-  println(listOfIntegers.map((elem: Int) => elem * 2))
+  println(listOfIntegers.map(_ * 2))
 
-  println(listOfIntegers.filter((elem: Int) => elem % 2 == 0))
+  println(listOfIntegers.filter(_ % 2 == 0))
 
-  println(listOfIntegers.flatMap((elem: Int) => new ConsGenerics[Int](elem, new ConsGenerics[Int](elem + 1, EmptyGenerics))))
+  println(listOfIntegers.flatMap(elem => new ConsGenerics[Int](elem, new ConsGenerics[Int](elem + 1, EmptyGenerics))))
 }
