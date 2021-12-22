@@ -44,4 +44,50 @@ object CurryingFunction extends App {
    * Or, you can simply call like below:
    */
   nestedCurrying(1)("str")(3.14) // a: 1, b: str, c: 3.14
+
+
+  /**
+   * To Curry
+   */
+  def toCurry(f: (Int, Int) => Int): Int => Int => Int = {
+    x => y => f(x, y)
+  }
+
+  def superAdder: Int => Int => Int = toCurry(_ + _)
+
+  println(superAdder(4)(2)) // 6
+
+
+  /**
+   * From Curry
+   */
+  def fromCurry(f: Int => Int => Int): (Int, Int) => Int = {
+    (x, y) => f(x)(y)
+  }
+
+  val simpleAdder = fromCurry(superAdder)
+  println(simpleAdder(4, 2)) // 6
+
+  /**
+   * Compose
+   */
+  def compose[A, B, T](f: A => B, g: T => A): T => B = {
+    x => f(g(x))
+  }
+
+  /**
+   * andThen
+   */
+  def andThen[A, B, C](f: A => B, g: B => C): A => C = {
+    x => g(f(x))
+  }
+
+  val add2 = _ + 2
+  val times3 = _ * 3
+
+  val composed = compose(add2, times3)
+  val ordered = andThen(add2, times3)
+
+  println(composed(4)) // 14
+  println(ordered(4)) // 18
 }
