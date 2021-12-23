@@ -82,8 +82,8 @@ object CurryingFunction extends App {
     x => g(f(x))
   }
 
-  val add2 = _ + 2
-  val times3 = _ * 3
+  val add2: Int => Int = _ + 2
+  val times3: Int => Int = _ * 3
 
   val composed = compose(add2, times3)
   val ordered = andThen(add2, times3)
