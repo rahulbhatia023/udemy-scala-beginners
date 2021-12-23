@@ -1,5 +1,7 @@
 package lectures.part3fp
 
+import exercises.MyListGenerics
+
 object MapFlatMapFilterFor extends App {
 
   val numbers = List(1, 2, 3, 4, 5)
@@ -93,4 +95,12 @@ object MapFlatMapFilterFor extends App {
   } yield "" + char + "-" + number + "-" + colour
 
   println(forEvenCombinations)
+
+  /**
+   * Note: In order to work with for comprehensions, your lists should have implemented map, flatmap and filter methods as per below signature:
+   *
+   * def map[B](f: A => B): MyList[B]
+   * def flatMap[B](f: A => MyList[B]): MyList[B]
+   * def filter(f: A => Boolean): MyList[A]
+   */
 }
