@@ -1,6 +1,6 @@
 package lectures.part3fp
 
-import exercises.MyListGenerics
+import exercises.MyList
 
 object MapFlatMapFilterFor extends App {
 
