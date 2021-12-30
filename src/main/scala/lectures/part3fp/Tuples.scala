@@ -3,7 +3,6 @@ package lectures.part3fp
 object Tuples extends App {
 
   /**
-   * Tuples:
    * Tuples can group at most 22 elements of different types ??
    */
   val aTuple1: (Int, String) = new Tuple2(2, "Hello Scala")
@@ -11,6 +10,7 @@ object Tuples extends App {
   val aTuple3: (Int, String) = Tuple2(2, "Hello Scala")
   val aTuple4: (Int, String) = Tuple2[Int, String](2, "Hello Scala")
   val aTuple5: (Int, String) = (2, "Hello Scala")
+  val aTuple6: (Int, String) = 2 -> "Hello Scala"
 
   println(aTuple1) // (2,Hello Scala)
   println(aTuple1._1) // 2
