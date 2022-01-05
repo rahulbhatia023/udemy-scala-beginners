@@ -25,7 +25,7 @@ object Maps extends App {
   /**
    * Get Value for a Key
    */
-  println(aMap1.get("Jim")) // 555
+  println(aMap1.get("Jim")) // Some(555)
   println(aMap1.apply("Jim")) // 555
   println(aMap1("Jim")) // 555
 
@@ -85,7 +85,7 @@ object Maps extends App {
    */
   val map = Map(1 -> "first", 2 -> "second")
   val list = List(2 -> "2nd", 3 -> "third")
-  println(leftMap ++ list)
+  println(map ++ list) // Map(1 -> first, 2 -> 2nd, 3 -> third)
 
   /**
    * Functionals on Maps
