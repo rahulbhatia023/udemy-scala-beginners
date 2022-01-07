@@ -83,7 +83,7 @@ object PatternMatching extends App {
   }
 
   /**
-   * It does not always make sense to Pattern Match everything
+   * It does not always make sense to Pattern Match everywhere
    * For example if we want to check if the number is even or not
    */
 
