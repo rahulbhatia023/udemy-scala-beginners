@@ -2,7 +2,7 @@ package lectures.part3fp
 
 import exercises.MyList
 
-object MapFlatMapFilterFor extends App {
+object ForComprehension extends App {
 
   val numbers = List(1, 2, 3, 4, 5)
   val chars = List('A', 'B', 'C', 'D', 'E')
