@@ -135,8 +135,8 @@ object AllThePatterns extends App {
    * Scala also suffers from this post because the jvm was designed in this way
    * So basically after type checking, our pattern match looks like:
    * numbers match {
-      case list: List[String] => "List of String"
-      case list: List[Int] => "List of Integers"
+      case list: List => "List of String"
+      case list: List => "List of Integers"
      }
    */
 }
