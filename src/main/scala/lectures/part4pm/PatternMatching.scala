@@ -27,33 +27,18 @@ object PatternMatching extends App {
   println(x) // 2
   println(description) // Two
 
-  /**
-   * Pattern Matching can decompose values especially when used in conjunction with case classes
-   * Case class has the ability to be deconstructed in pattern matching
-   */
-  case class Person(name: String, age: Int)
-
-  def greeting(person: Person) = person match {
-    case Person(n, a) if (a < 21) => s"Hello, my name is $n and I am $a years old and I cannot drink in US"
-    case Person(n, a) => s"Hello, my name is $n and I am $a years old"
-    case _ => "I don't know who I am"
-  }
-
-  println(greeting(Person("Bob", 25))) // Hello, my name is Bob and I am 25 years old
-  println(greeting(Person("Mary", 20))) // Hello, my name is Mary and I am 20 years old and I cannot drink in US
 
   /**
    * What if no case matches ?
    */
-
   val number = 3
   lazy val numberDescription = number match {
     case 1 => "One"
     case 2 => "Two"
   }
-
   // println(numberDescription)
   // scala.MatchError: 3 (of class java.lang.Integer)
+
 
   /**
    * Type of Pattern Matching expression:
@@ -66,27 +51,11 @@ object PatternMatching extends App {
     case _ => 100
   }
 
-  /**
-   * Pattern Matching on sealed hierarchies
-   */
-  sealed class Animal
-
-  case class Dog(breed: String) extends Animal
-
-  case class Parrot(greet: String) extends Animal
-
-  val animal: Animal = Dog("Terra Nova")
-
-  // Compilation Warning: match may not be exhaustive. It would fail on pattern case: _: Animal
-  animal match {
-    case Dog(breed) => println(s"Matched a dog of $breed breed")
-  }
 
   /**
    * It does not always make sense to Pattern Match everywhere
    * For example if we want to check if the number is even or not
    */
-
   val a = 5
   val isEven = a match {
     case n if (n % 2 == 0) => true
