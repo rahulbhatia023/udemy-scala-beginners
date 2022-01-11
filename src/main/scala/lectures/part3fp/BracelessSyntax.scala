@@ -6,8 +6,14 @@ object BracelessSyntax {
    * If Else
    */
   val anIfExpression: String =
-    if (2 > 3) "bigger"
-    else "smaller"
+    if (2 > 3) {
+      val result = "bigger"
+      result
+    }
+    else {
+      val result = "smaller"
+      result
+    }
 
   // Scala 3 Syntax - Indentation Based
   val anIfExpression_v2: String =
@@ -37,11 +43,10 @@ object BracelessSyntax {
   } yield s"$n$s"
 
   // Scala 3
-  val forComprehension_v2: List[String] =
-    for
-      n <- List(1, 2)
-      s <- List("black", "white")
-    yield s"$n-$s"
+  val forComprehension_v2: List[String] = for
+    n <- List(1, 2)
+    s <- List("black", "white")
+  yield s"$n-$s"
 
 
   /**
@@ -60,6 +65,8 @@ object BracelessSyntax {
       case 1 => "The One"
       case 2 => "Double or Nothing"
       case _ => "Something Else"
+
+  end patternMatch_v2
 
 
   /**
