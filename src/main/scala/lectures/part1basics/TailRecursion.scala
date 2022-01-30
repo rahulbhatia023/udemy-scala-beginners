@@ -20,7 +20,7 @@ object TailRecursion extends App {
     factorialHelper(n, 1)
   }
 
-  println(factorial(5))
+  println(factorial(5)) // 120
 
   // Works Fine
   println(factorial(50000))
@@ -38,7 +38,7 @@ object TailRecursion extends App {
     concatHelper(n, "")
   }
 
-  println(concatenateString("Hello", 3))
+  println(concatenateString("Hello", 3)) // HelloHelloHello
 
   /**
    * Fibonacci - Tail Recursion
@@ -54,7 +54,7 @@ object TailRecursion extends App {
     else fibonacciHelper(2, 1, 1)
   }
 
-  println(fibonacci(7))
+  println(fibonacci(7)) // 13
 
   /**
    * Prime Numbers - Tail Recursion
@@ -70,5 +70,5 @@ object TailRecursion extends App {
     isPrimeHelper(n / 2, isStillPrime = true)
   }
 
-  println(isPrime(2003))
+  println(isPrime(2003)) // true
 }
